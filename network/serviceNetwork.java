@@ -18,27 +18,20 @@ public class serviceNetwork {
      */
     private int port = 12834;
 
-    /**
-     * 线上最大用户数
-     */
-    final int maxUserNumber = 10;
+    private TaskCallBack callBack;
 
-    private int curUserNumber = 0;
-
-    public serviceNetwork() throws IOException {
-        System.out.println("端口: " + port);
+    public serviceNetwork(TaskCallBack callBack) throws IOException {
+        this.callBack = callBack;
         serverSocket = new ServerSocket(port);
         try {
             while (true) {
+                // socket连接请求
                 var client = serverSocket.accept();
-                System.out.print("用户 " + client.getInetAddress().toString() + ":" + client.getPort() + " 上线: "
-                        + client.toString());
-                new Thread(new serverThread(client)).start();
+                // 任务加入线程池
+                serverThreadPool.getInstance().pushTask(new serverTask(client, callBack));
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            // TODO 关掉资源
         }
 
     }
