@@ -2,10 +2,12 @@ package view;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import network.TaskCallBack;
 import network.UserInfo;
-import network.UserMessage;
+import infomation.UserMessage;
 import network.serviceNetwork;
 
 /**
@@ -31,7 +33,9 @@ public class serviceView {
             @Override
             public void OnReceiveUserMessage(UserInfo userInfo, UserMessage msg) {
                 // TODO 发送信息时要做的
-
+                // 按照 时间->消息 的格式 显示消息
+                System.out.println(dateFormat.format(Calendar.getInstance().getTime()) + "-> "
+                        + msg.getType().toString() + ": " + msg.getMessage());
             }
 
             @Override
@@ -65,4 +69,6 @@ public class serviceView {
             }
         });
     }
+
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("MM月dd日hh:mm:ss");
 }

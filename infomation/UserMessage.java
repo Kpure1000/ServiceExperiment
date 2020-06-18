@@ -1,4 +1,4 @@
-package network;
+package infomation;
 
 import java.io.Serializable;
 
@@ -48,8 +48,14 @@ public class UserMessage implements Serializable {
 
     private String message;
 
-    public UserMessage(MessageType messageType) {
+    public UserMessage() {
+        this.messageType = MessageType.CHECK_ID;
+        this.message = "Admin";
+    }
+
+    public UserMessage(MessageType messageType, String msg) {
         this.messageType = messageType;
+        this.message = msg;
     }
 
     public String getMessage() {

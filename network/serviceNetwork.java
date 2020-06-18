@@ -8,7 +8,6 @@ package network;
 
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.net.Socket;
 
 public class serviceNetwork {
     ServerSocket serverSocket;
@@ -28,7 +27,7 @@ public class serviceNetwork {
                 // socket连接请求
                 var client = serverSocket.accept();
                 // 任务加入线程池
-                serverThreadPool.getInstance().pushTask(new serverTask(client, callBack));
+                serverThreadPool.getInstance().pushTask(new serverTask(client, this.callBack));
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -2,6 +2,8 @@ package network;
 
 import java.net.Socket;
 
+import infomation.UserMessage;
+
 public interface TaskCallBack {
     /**
      * 当Clinet Socket连接成功

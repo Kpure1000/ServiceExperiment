@@ -24,28 +24,28 @@ public class serverThreadPool {
     /**
      * 核心数量
      */
-    private static final int corePoolSize = Runtime.getRuntime().availableProcessors();
+    private final int corePoolSize = Runtime.getRuntime().availableProcessors();
 
     /**
      * 最大核心线程数量
      */
-    private static final int maximumPoolSize = Runtime.getRuntime().availableProcessors() * 2;
+    private final int maximumPoolSize = Runtime.getRuntime().availableProcessors() * 2;
 
     /**
      * 任务结束后存活时间
      */
-    private static final long keepAliveTime = 200;
+    private final long keepAliveTime = 200;
 
     /**
      * 线程池
      */
-    private static ThreadPoolExecutor pool = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime,
+    private ThreadPoolExecutor pool = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime,
             TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(64));
 
     /**
      * 加入任务
      */
-    public static void pushTask(serverTask task) {
+    public void pushTask(serverTask task) {
         System.out.println("加入任务");
         pool.execute(task);
     }
@@ -53,7 +53,7 @@ public class serverThreadPool {
     /**
      * 关闭线程池
      */
-    public static void QuitPool() {
+    public void QuitPool() {
         if (pool.isShutdown())
             return;
         System.out.println("关闭线程池");
@@ -63,7 +63,7 @@ public class serverThreadPool {
     /**
      * 立刻终止线程池
      */
-    public static void QuitPoolNow() {
+    public void QuitPoolNow() {
         if (pool.isShutdown())
             return;
         System.out.println("强行关闭线程池");
