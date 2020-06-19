@@ -2,7 +2,8 @@ package network;
 
 import java.net.Socket;
 
-import infomation.UserMessage;
+import message.UserMessage;
+
 
 public interface TaskCallBack {
     /**
@@ -30,6 +31,7 @@ public interface TaskCallBack {
      * 
      * @param userInfo 用户信息
      * @param msg      消息
+     * // TODO 这个userInfo 可以去掉了
      */
     public void OnReceiveUserMessage(UserInfo userInfo, UserMessage msg);
 
@@ -39,4 +41,9 @@ public interface TaskCallBack {
      * @param userInfo 用户信息
      */
     public void OnSendUserMessage(UserInfo userInfo);
+
+    /**
+     * 当接收的消息错误
+     */
+	public void OnMessageError();
 }

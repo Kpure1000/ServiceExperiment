@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 
-import infomation.UserMessage;
+import message.*;
 
 /**
  * 服务器任务
@@ -20,14 +20,21 @@ public class serverTask implements Runnable {
     public void run() {
         try {
             objIn = new ObjectInputStream(socket.getInputStream());
-            UserMessage inobj = new UserMessage();
+            UserMessage inobj;
             // 接收消息
-            while ((inobj = (UserMessage) objIn.readObject()) != null) {
-                callBack.OnReceiveUserMessage(null, inobj);
+            while (true) {
+                inobj = (UserMessage) objIn.readObject();
+                if (inobj == null) {
+                    callBack.OnMessageError();
+                    break;
+                } else {
+                    // TODO 还要改这个回调
+                    callBack.OnReceiveUserMessage(null, inobj);
+                }
             }
         } catch (IOException e) {
-            // 因为
-            //e.printStackTrace();
+            // 因为readObject始终会抛出异常，所以咱啥也不干
+            // e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

@@ -26,6 +26,7 @@ public class serviceNetwork {
             while (true) {
                 // socket连接请求
                 var client = serverSocket.accept();
+                callBack.OnClientConnect(client);
                 // 任务加入线程池
                 serverThreadPool.getInstance().pushTask(new serverTask(client, this.callBack));
             }

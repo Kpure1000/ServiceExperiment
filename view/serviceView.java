@@ -5,9 +5,9 @@ import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import message.UserMessage;
 import network.TaskCallBack;
 import network.UserInfo;
-import infomation.UserMessage;
 import network.serviceNetwork;
 
 /**
@@ -16,8 +16,16 @@ import network.serviceNetwork;
  */
 public class serviceView {
 
+    /**
+     * 网络层
+     */
     serviceNetwork service;
 
+    /**
+     * 入口
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         try {
             new serviceView();
@@ -26,16 +34,20 @@ public class serviceView {
         }
     }
 
+    /**
+     * 构造
+     * 
+     * @throws IOException
+     */
     public serviceView() throws IOException {
         System.out.println("*服务端界面启动*");
         service = new serviceNetwork(new TaskCallBack() {
 
             @Override
             public void OnReceiveUserMessage(UserInfo userInfo, UserMessage msg) {
-                // TODO 发送信息时要做的
+                // TODO 接收信息时要做的
                 // 按照 时间->消息 的格式 显示消息
-                System.out.println(dateFormat.format(Calendar.getInstance().getTime()) + "-> "
-                        + msg.getType().toString() + ": " + msg.getMessage());
+                System.out.println(dateFormat.format(Calendar.getInstance().getTime()) + "-> " + msg.getContent());
             }
 
             @Override
@@ -59,12 +71,21 @@ public class serviceView {
             @Override
             public void OnClientConnect(Socket clientSocket) {
                 // TODO 客户端连接
+                System.out.println(
+                        "客户端: " + clientSocket.getInetAddress().toString() + ":" + clientSocket.getPort() + " 连接服务");
 
             }
 
             @Override
             public void OnSendUserMessage(UserInfo userInfo) {
                 // TODO 发送消息给用户
+
+            }
+
+            @Override
+            public void OnMessageError() {
+                // TODO Auto-generated method stub
+                System.out.println("接收的消息为空");
 
             }
         });
