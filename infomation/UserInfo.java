@@ -5,7 +5,7 @@ package infomation;
  * @author Kpurek
  * @version 1.0
  */
-public class UserInfo extends infoBase {
+public class UserInfo extends InfoBase {
 
     public String email = "";
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author Kpurek
  * @version 1.0
  */
-public class GroupInfo extends infoBase {
+public class GroupInfo extends InfoBase {
 
     /**
      * 构造
@@ -23,5 +23,5 @@ public class GroupInfo extends infoBase {
     public void addMember(char[] id){
         
     }
-    private ArrayList<infoBase> members = new ArrayList<infoBase>();
+    private ArrayList<InfoBase> members = new ArrayList<InfoBase>();
 }
