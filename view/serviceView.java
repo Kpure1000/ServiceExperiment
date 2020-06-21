@@ -5,9 +5,9 @@ import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import infomation.UserInfo;
 import message.UserMessage;
 import network.TaskCallBack;
-import network.UserInfo;
 import network.serviceNetwork;
 
 /**

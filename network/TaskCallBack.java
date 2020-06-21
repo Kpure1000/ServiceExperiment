@@ -2,6 +2,7 @@ package network;
 
 import java.net.Socket;
 
+import infomation.UserInfo;
 import message.UserMessage;
 
 

@@ -1,11 +1,18 @@
 package infomation;
 
+import java.io.Serializable;
+
 /**
  * userinfo
  * @author Kpurek
  * @version 1.0
  */
-public class InfoBase {
+public class InfoBase implements Serializable{
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 609116983101639345L;
 
     /**
      * ID (创建后只读)

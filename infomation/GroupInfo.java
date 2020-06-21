@@ -9,9 +9,15 @@ import java.util.ArrayList;
 public class GroupInfo extends InfoBase {
 
     /**
+     *
+     */
+    private static final long serialVersionUID = -6643116120305496493L;
+
+    /**
      * 构造
-     * @param id 群组ID
-     * @param name 群组名称 
+     * 
+     * @param id   群组ID
+     * @param name 群组名称
      */
     public GroupInfo(String id, String name) {
         super(id, name);
