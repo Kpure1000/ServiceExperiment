@@ -19,6 +19,13 @@ public class serviceNetwork {
 
     private TaskCallBack callBack;
 
+    /**
+     * 构造
+     * <p>
+     * 在内部监听ServerSocket阻塞，向服务线程池中加入任务
+     * @param callBack 
+     * @throws IOException
+     */
     public serviceNetwork(TaskCallBack callBack) throws IOException {
         this.callBack = callBack;
         serverSocket = new ServerSocket(port);

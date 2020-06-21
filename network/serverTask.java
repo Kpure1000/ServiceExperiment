@@ -24,12 +24,12 @@ public class serverTask implements Runnable {
             // 接收消息
             while (true) {
                 inobj = (UserMessage) objIn.readObject();
-                if (inobj == null) {
-                    callBack.OnMessageError();
-                    break;
-                } else {
+                if (inobj != null) {
                     // TODO 还要改这个回调
                     callBack.OnReceiveUserMessage(null, inobj);
+                } else {
+                    callBack.OnMessageError();
+                    break;
                 }
             }
         } catch (IOException e) {
