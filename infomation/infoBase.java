@@ -5,7 +5,7 @@ package infomation;
  * @author Kpurek
  * @version 1.0
  */
-public class infoBase {
+public class InfoBase {
 
     /**
      * ID (创建后只读)
@@ -17,7 +17,7 @@ public class infoBase {
      */
     String Name;
 
-    public infoBase(String id, String name) {
+    public InfoBase(String id, String name) {
         ID = id;
         Name = name;
     }
