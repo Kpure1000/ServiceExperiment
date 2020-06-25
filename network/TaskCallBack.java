@@ -34,7 +34,7 @@ public interface TaskCallBack {
      * @param msg      消息
      * // TODO 这个userInfo 可以去掉了
      */
-    public void OnReceiveUserMessage(UserInfo userInfo, UserMessage msg);
+    public void OnReceiveUserMessage(UserMessage msg);
 
     /**
      * 当发送消息给用户

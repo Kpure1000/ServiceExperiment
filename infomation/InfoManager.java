@@ -1,8 +1,37 @@
 package infomation;
 
 import java.util.HashMap;
-
+/**
+ * 信息管理器
+ * <p>
+ * 单例
+ * @author Kpurek
+ * @version 1.0
+ */
 public class InfoManager {
+
+    /**
+     * 实例
+     */
+    private static InfoManager instance = new InfoManager();
+
+    private InfoManager() {
+    }
+
+    /**
+     * 懒加载实例
+     * 
+     * @return 单例
+     */
+    public static InfoManager getInstance() {
+        if (instance == null) {
+            instance = new InfoManager();
+            return instance;
+        }
+        return instance;
+    }
+    
+    /*----------------------------------------------------------------------*/
 
     /**
      * 用户散列表
@@ -15,7 +44,7 @@ public class InfoManager {
      * @param ID
      * @return 返回用户容器中的实例，空则返回null
      */
-    public UserInstance getUserInstance(String ID) {
+    public UserInstance getUser(String ID) {
         if (checkID(ID)) {
             return userMap.get(ID);
         }
@@ -37,7 +66,7 @@ public class InfoManager {
     }
 
     /**
-     * 校验ID
+     * 校验密码
      * 
      * @param ID ID
      * @return 是否存在ID

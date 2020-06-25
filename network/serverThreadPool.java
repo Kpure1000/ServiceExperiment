@@ -46,7 +46,7 @@ public class serverThreadPool {
      * 加入任务
      */
     public void pushTask(serverTask task) {
-        System.out.println("加入任务");
+        // System.out.println("加入任务");
         pool.execute(task);
     }
 
@@ -56,7 +56,7 @@ public class serverThreadPool {
     public void QuitPool() {
         if (pool.isShutdown())
             return;
-        System.out.println("关闭线程池");
+        // System.out.println("关闭线程池");
         pool.shutdown();
     }
 
@@ -66,7 +66,7 @@ public class serverThreadPool {
     public void QuitPoolNow() {
         if (pool.isShutdown())
             return;
-        System.out.println("强行关闭线程池");
+        // System.out.println("强行关闭线程池");
         pool.shutdownNow();
     }
 }

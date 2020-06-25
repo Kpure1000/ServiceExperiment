@@ -21,12 +21,15 @@ public class serverTask implements Runnable {
         try {
             objIn = new ObjectInputStream(socket.getInputStream());
             UserMessage inobj;
+            UserMessageReader userMessageReader = new UserMessageReader();
             // 接收消息
             while (true) {
                 inobj = (UserMessage) objIn.readObject();
                 if (inobj != null) {
                     // TODO 还要改这个回调
-                    callBack.OnReceiveUserMessage(null, inobj);
+                    callBack.OnReceiveUserMessage(inobj);
+                    userMessageReader.ReadMessage(inobj);
+                    inobj=null;
                 } else {
                     callBack.OnMessageError();
                     break;
@@ -55,7 +58,13 @@ public class serverTask implements Runnable {
      */
     private Socket socket;
 
+    /**
+     * 对象输入流
+     */
     ObjectInputStream objIn;
 
+    /**
+     * 任务回调
+     */
     private TaskCallBack callBack;
 }

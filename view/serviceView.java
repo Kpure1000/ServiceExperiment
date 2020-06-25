@@ -44,7 +44,7 @@ public class serviceView {
         service = new serviceNetwork(new TaskCallBack() {
 
             @Override
-            public void OnReceiveUserMessage(UserInfo userInfo, UserMessage msg) {
+            public void OnReceiveUserMessage(UserMessage msg) {
                 // TODO 接收信息时要做的
                 // 按照 时间->消息 的格式 显示消息
                 System.out.println(dateFormat.format(Calendar.getInstance().getTime()) + "-> " + msg.getContent());
